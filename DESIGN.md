@@ -53,7 +53,8 @@ The source of truth for the look. If `src/app/globals.css` or a component drifts
   - **Buttons:** primary = ink fill with surface text; secondary = surface with an ink border; tertiary = a text link.
   - **States:** hover darkens or raises contrast, active nudges by 1px, focus-visible gets the 3px focus ring, and disabled lowers contrast. Font weight never changes between states.
   - **FAQ:** native `<details>`.
-- **Motion:** one moment only. The TAKEN sticker "stamps" in (opacity plus scale from 1.12 to 1, 220ms, ease-out, 350ms delay). Animate only transform and opacity; reduced motion is honored globally.
+- **Motion (quiz):** the steps form an ordered sequence, so "Continue" slides in from the right and "Back" from the left (48px with a fade, 150/210/320ms). The care plan arrives as a Suspense reveal: "Preparing…" steps down and the plan rises from below. All of it uses React `<ViewTransition>` with CSS in `globals.css`, and reduced motion zeroes it.
+- **Motion (landing):** one moment only. The TAKEN sticker "stamps" in (opacity plus scale from 1.12 to 1, 220ms, ease-out, 350ms delay). Animate only transform and opacity; reduced motion is honored globally.
 - **Iconography:** typographic glyphs only (✓, →, ×) in the label face. No icon library and no emoji.
 - **Dark mode:** out of scope for the MVP. `color-scheme: light`.
 - **Accessibility:** WCAG 2.2 AA. Visible focus, targets ≥44px, a skip link, landmark elements, sourced claims with links, and color-independent status.

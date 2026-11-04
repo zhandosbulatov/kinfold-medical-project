@@ -29,7 +29,22 @@ type Db = ReturnType<typeof createDb>;
 // Reuse one client across hot reloads in dev.
 const globalForDb = globalThis as unknown as { __kinfoldDb?: Db };
 
-export const db: Db = globalForDb.__kinfoldDb ?? createDb();
-if (process.env.NODE_ENV !== "production") globalForDb.__kinfoldDb = db;
+function getDb(): Db {
+  if (!globalForDb.__kinfoldDb) globalForDb.__kinfoldDb = createDb();
+  return globalForDb.__kinfoldDb;
+}
+
+/**
+ * Lazy: nothing connects until the first query. `next build` imports this
+ * module in several workers at once; opening PGlite in each of them races on
+ * the same ./.pglite folder.
+ */
+export const db = new Proxy({} as Db, {
+  get(_target, prop) {
+    const real = getDb();
+    const value = Reflect.get(real, prop, real);
+    return typeof value === "function" ? value.bind(real) : value;
+  },
+});
 
 export { schema };
