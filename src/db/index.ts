@@ -15,6 +15,12 @@ function createDb() {
     // prepare: false is required behind Neon's PgBouncer pooler.
     return drizzlePostgres(postgres(url, { prepare: false, max: 5 }), { schema });
   }
+  if (process.env.VERCEL) {
+    // Vercel's filesystem is read-only: never fall back to PGlite there.
+    throw new Error(
+      "DATABASE_URL is missing. Connect Neon in Vercel → Storage for this environment, then redeploy.",
+    );
+  }
   return drizzlePglite(new PGlite(process.env.PGLITE_DIR ?? "./.pglite"), { schema });
 }
 

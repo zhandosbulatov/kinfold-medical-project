@@ -38,7 +38,9 @@ A family care coordinator for **working adult children** managing an aging paren
 ## Stack
 - Next.js 16 (App Router, `src/`), React 19, TypeScript, Tailwind v4. **Cache Components is on** (`cacheComponents: true`): any component that reads the DB, `params`, `cookies` or `searchParams` must sit inside `<Suspense>`. **Every DB reader must start with `await connection()`** (from `next/server`), as in `src/lib/data/family.ts`. Without it, Next tries to prerender the read and crashes on `new Date()` after a `revalidatePath`. Read `node_modules/next/dist/docs/` before using an API you're unsure of (Next 16 renamed middleware to `proxy.ts`, etc.).
 - Drizzle ORM. `DATABASE_URL` set → Neon via postgres-js (`prepare: false`). Unset → embedded **PGlite** in `./.pglite` (local dev, no Docker). PGlite is single-process: **stop `next dev` before `db:migrate` / `db:seed`.**
-- Deploy: Vercel and Neon (Vercel Marketplace).
+- Deploy: Vercel and Neon (Vercel Marketplace). Live at https://kinfold-medical-project.vercel.app. Each push to `main` deploys to production.
+  - Vercel runs the `vercel-build` script: migrate, then seed, then `next build`. **Every deploy re-seeds the demo family**, so don't push during a live demo.
+  - Scripts use `DATABASE_URL_UNPOOLED` (Neon's direct connection) when it's set. The app uses the pooled `DATABASE_URL`.
 
 ## Data model (`src/db/schema.ts`)
 - **Family:** `families` (slug `demo`), `members` (role organizer|sibling, `invite_token`), `care_recipients` (`private_token`, timezone).
