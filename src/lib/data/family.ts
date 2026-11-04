@@ -1,11 +1,10 @@
 import "server-only";
-import { and, eq, gte, lt } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { connection } from "next/server";
 import { cache } from "react";
 import { db } from "@/db";
-import { careRecipients, doseEvents, families, members } from "@/db/schema";
+import { careRecipients, families, members } from "@/db/schema";
 import { DEMO_SLUG } from "@/lib/demo";
-import { effectiveStatus } from "@/lib/doses";
 import { localDay, zonedToUtc } from "@/lib/time";
 
 /**
@@ -54,24 +53,4 @@ export function todayBounds(timeZone: string, now = new Date()) {
     start: zonedToUtc(localDay(timeZone, now), "00:00", timeZone),
     end: zonedToUtc(localDay(timeZone, now, 1), "00:00", timeZone),
   };
-}
-
-/** Today's dose counts by effective status (missed computed on read). */
-export async function getTodayDoseCounts(recipientId: string, timeZone: string) {
-  await connection();
-  const now = new Date();
-  const { start, end } = todayBounds(timeZone, now);
-  const rows = await db
-    .select({ status: doseEvents.status, scheduledAt: doseEvents.scheduledAt })
-    .from(doseEvents)
-    .where(
-      and(
-        eq(doseEvents.careRecipientId, recipientId),
-        gte(doseEvents.scheduledAt, start),
-        lt(doseEvents.scheduledAt, end),
-      ),
-    );
-  const counts = { due: 0, taken: 0, missed: 0 };
-  for (const r of rows) counts[effectiveStatus(r, now)]++;
-  return counts;
 }

@@ -26,9 +26,8 @@ export function TabBar() {
                 href={tab.href}
                 aria-current={active ? "page" : undefined}
                 className={
-                  active
-                    ? "flex min-h-14 items-center justify-center font-semibold text-brand-ink"
-                    : "flex min-h-14 items-center justify-center text-ink-muted hover:text-ink"
+                  "flex min-h-14 items-center justify-center border-t-4 font-semibold transition-[color,border-color] duration-150 " +
+                  (active ? "border-brand text-ink" : "border-transparent text-ink-muted hover:text-ink")
                 }
               >
                 {tab.label}
