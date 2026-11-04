@@ -27,7 +27,7 @@ export function TabBar() {
                 aria-current={active ? "page" : undefined}
                 className={
                   active
-                    ? "flex min-h-14 items-center justify-center font-semibold text-brand"
+                    ? "flex min-h-14 items-center justify-center font-semibold text-brand-ink"
                     : "flex min-h-14 items-center justify-center text-ink-muted hover:text-ink"
                 }
               >

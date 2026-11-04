@@ -33,11 +33,11 @@ async function TodaySummary() {
       </p>
       <p>
         Rose’s link:{" "}
-        <a className="text-brand underline" href={`/r/${recipient.privateToken}`}>
+        <a className="text-brand-ink underline" href={`/r/${recipient.privateToken}`}>
           /r/{recipient.privateToken}
         </a>{" "}
         · Ben’s invite:{" "}
-        <a className="text-brand underline" href={`/join/${DEMO_BEN_INVITE}`}>
+        <a className="text-brand-ink underline" href={`/join/${DEMO_BEN_INVITE}`}>
           /join/{DEMO_BEN_INVITE}
         </a>
       </p>

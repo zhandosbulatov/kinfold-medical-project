@@ -90,6 +90,7 @@ From the `vercel-react-best-practices` and `vercel-composition-patterns` skills:
 - **Component APIs:** compound components and explicit variants instead of boolean props (e.g. `<DoseCard.Taken>` / `<DoseCard.Missed>`, not `<DoseCard isMissed>`). Lift shared state into a provider; under React 19 use `use()`, not `forwardRef`/`useContext`.
 - **Mutations:** Server Actions + `revalidatePath`. Plain `<form action>` where possible.
 - **Styling:**
+  - **Read `DESIGN.md` first.** It's the source of truth for the "pharmacy label" direction. Reuse `RxLabel`, `Sticker` (`src/components/rx/`) and `PrimaryLink`/`SecondaryLink` (`src/components/ui/`). Amber (`bg-brand`) always takes ink text, never white. The `display` and `label-caps` utilities set the Archivo headline and label styles.
   - Use design tokens from `src/app/globals.css` (`bg-canvas`, `text-ink`, `text-ink-muted`, `bg-brand`, `*-taken|due|missed`, `text-rose`). Never raw hex.
   - Status *text* uses the `*-ink` variants for contrast.
   - Respect `prefers-reduced-motion` (handled globally).

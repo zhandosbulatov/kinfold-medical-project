@@ -16,7 +16,7 @@ export function PageStub({
 }) {
   return (
     <main className="mx-auto w-full max-w-xl flex-1 px-5 py-10">
-      <p className="text-sm font-semibold uppercase tracking-wide text-brand">{prompt}</p>
+      <p className="text-sm font-semibold uppercase tracking-wide text-brand-ink">{prompt}</p>
       <h1 className="mt-2 font-display text-3xl font-semibold text-ink">{title}</h1>
       {children ? <div className="mt-4 space-y-3 text-ink-muted">{children}</div> : null}
     </main>

@@ -12,12 +12,12 @@ export function DemoControls() {
       </h2>
       <div className="mt-3 flex flex-wrap gap-2">
         <form action={simulateMissedDose}>
-          <button className="min-h-11 rounded-full bg-missed px-4 font-semibold text-white">
+          <button className="min-h-11 rounded-label bg-missed px-4 font-semibold text-white">
             Simulate missed dose
           </button>
         </form>
         <form action={resetDemo}>
-          <button className="min-h-11 rounded-full border border-line bg-surface px-4 font-semibold">
+          <button className="min-h-11 rounded-label border border-line bg-surface px-4 font-semibold">
             Reset demo
           </button>
         </form>
