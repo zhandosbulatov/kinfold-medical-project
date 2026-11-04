@@ -72,5 +72,16 @@ The source of truth for the look. If `src/app/globals.css` or a component drifts
   - The focus ring was changed to ink after it measured under 3:1 on amber.
 - **Open item:** Atkinson draws slashed zeros ("3Ø"). That's deliberate for low-vision legibility but unusual in marketing copy. It was kept for consistency with Rose's screen.
 
+**Rose's screen `/r/[token]` (Prompt 5): passes the web-design-guidelines audit.**
+- **Size:** every text node is at least 22px (measured). "I took them" is 80px tall, the mood buttons 128px and "Call Anna" 64px. There's no horizontal overflow at 375px.
+- **Structure:** one `<main>`, an h1 greeting, then h2 sections. Mood is a labelled button group using `aria-pressed`. The confirmation and mood thank-you sit in `aria-live="polite"` regions.
+- **Behaviour:**
+  - Taps are optimistic: the thank-you shows in under 100ms.
+  - Nothing times out or disappears, and there's no navigation or jargon.
+  - The faces are a single-stroke SVG set with text labels, so they never rely on color or emoji.
+- **Known:**
+  - An invalid token streams the not-found UI with HTTP 200, because the shell is prerendered (Cache Components). The page is `noindex`.
+  - The 🌷 in "All done for today" is decorative and `aria-hidden`.
+
 ## Changelog
 - **2026-11-04:** Direction picked by the team from three candidates: pharmacy label, pill organizer and Sunday letter. This replaces the initial sage/Fraunces scaffold tokens: Fraunces is dropped (serif-editorial tell), sage is replaced by amber-bottle brand, and cream is replaced by a neutral canvas.
