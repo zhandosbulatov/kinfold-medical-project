@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="440" viewBox="0 0 360 440" role="img" aria-label="Sample pill bottle: Amlodipine 5 Mg Tablet">
+  <rect width="360" height="440" fill="#e9e4dc"/>
+  <rect x="58" y="22" width="244" height="56" rx="10" fill="#f7f7f5"/>
+  <rect x="58" y="70" width="244" height="12" fill="#dcdcd8"/>
+  <rect x="40" y="82" width="280" height="336" rx="26" fill="#c9701f"/>
+  <rect x="58" y="96" width="24" height="300" rx="10" fill="#e08a3c" opacity="0.55"/>
+  <g font-family="Arial Narrow, Arial, sans-serif" fill="#1d1a17">
+    <rect x="52" y="132" width="256" height="210" rx="6" fill="#fdfdfb"/>
+    <text x="64" y="154" font-family="Courier New, monospace" font-size="13">Rx 4471290</text>
+    <text x="296" y="154" font-size="12" font-weight="700" text-anchor="end">RIVERSIDE PHARMACY</text>
+    <rect x="64" y="161" width="232" height="2" fill="#1d1a17"/>
+    <text x="64" y="184" font-size="16" font-weight="700">ROSE M.</text>
+    <text x="64" y="210" font-size="17" font-weight="700">AMLODIPINE 5 MG TABLET</text>
+    <text x="64" y="238" font-size="14">TAKE 1 TABLET BY MOUTH</text><text x="64" y="258" font-size="14">ONCE DAILY</text>
+    <rect x="64" y="304" width="232" height="1" fill="#bdb8b0"/>
+    <text x="64" y="324" font-family="Courier New, monospace" font-size="13">QTY 30</text>
+    <text x="150" y="324" font-family="Courier New, monospace" font-size="13">RF 3</text>
+    <text x="214" y="324" font-family="Courier New, monospace" font-size="13">DR PATEL</text>
+    
+    <g transform="rotate(-3 180 370)">
+      <rect x="70" y="352" width="220" height="30" rx="4" fill="#f2d64b"/>
+      <text x="180" y="372" font-size="13" font-weight="700" text-anchor="middle">MAY CAUSE DIZZINESS</text>
+    </g>
+  </g>
+</svg>
